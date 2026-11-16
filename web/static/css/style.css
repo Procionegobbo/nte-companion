@@ -190,6 +190,7 @@ a { color: var(--accent); }
   color: var(--color-text);
   text-decoration: none;
 }
+.site-header__nav { display: flex; gap: var(--space-5); }
 .site-header__nav a {
   font: 600 .8125rem/1 var(--font-heading);
   letter-spacing: .1em;

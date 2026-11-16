@@ -11,6 +11,7 @@ import (
 func New(pages *PageHandler, chatHandler http.Handler, regolamentoImgFS, staticFS fs.FS, trustProxyHeaders bool) http.Handler {
 	mux := http.NewServeMux()
 	mux.HandleFunc("GET /{$}", pages.Home)
+	mux.HandleFunc("GET /privacy", pages.Privacy)
 	mux.HandleFunc("GET /regolamento/{slug}", pages.Chapter)
 	mux.Handle("GET /regolamento/img/", http.StripPrefix("/regolamento/img/", http.FileServerFS(regolamentoImgFS)))
 	mux.Handle("GET /static/", http.StripPrefix("/static/", http.FileServerFS(staticFS)))

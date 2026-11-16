@@ -39,6 +39,7 @@ type PageHandler struct {
 	bySlug      map[string]int // index into chapters
 	homeTmpl    *template.Template
 	chapterTmpl *template.Template
+	privacyTmpl *template.Template
 }
 
 func NewPageHandler(chapters []content.Chapter, webFS fs.FS) (*PageHandler, error) {
@@ -49,6 +50,10 @@ func NewPageHandler(chapters []content.Chapter, webFS fs.FS) (*PageHandler, erro
 	chapterTmpl, err := template.ParseFS(webFS, "templates/layout.html", "templates/chapter.html")
 	if err != nil {
 		return nil, fmt.Errorf("parse chapter template: %w", err)
+	}
+	privacyTmpl, err := template.ParseFS(webFS, "templates/layout.html", "templates/privacy.html")
+	if err != nil {
+		return nil, fmt.Errorf("parse privacy template: %w", err)
 	}
 
 	bySlug := make(map[string]int, len(chapters))
@@ -61,6 +66,7 @@ func NewPageHandler(chapters []content.Chapter, webFS fs.FS) (*PageHandler, erro
 		bySlug:      bySlug,
 		homeTmpl:    homeTmpl,
 		chapterTmpl: chapterTmpl,
+		privacyTmpl: privacyTmpl,
 	}, nil
 }
 
@@ -130,5 +136,18 @@ func (h *PageHandler) Chapter(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 	if err := h.chapterTmpl.ExecuteTemplate(w, "layout", data); err != nil {
 		log.Printf("capitolo %q: errore di rendering: %v", slug, err)
+	}
+}
+
+type simplePageData struct {
+	PageTitle       string
+	BodyDataChapter string
+}
+
+func (h *PageHandler) Privacy(w http.ResponseWriter, r *http.Request) {
+	data := simplePageData{PageTitle: "Privacy", BodyDataChapter: "materiali"}
+	w.Header().Set("Content-Type", "text/html; charset=utf-8")
+	if err := h.privacyTmpl.ExecuteTemplate(w, "layout", data); err != nil {
+		log.Printf("privacy: errore di rendering: %v", err)
 	}
 }
