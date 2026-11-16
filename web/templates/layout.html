@@ -1,0 +1,58 @@
+{{define "layout"}}
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{if .PageTitle}}{{.PageTitle}} · {{end}}Not the End — Regolamento</title>
+<meta name="description" content="Il regolamento di Not the End, consultabile online, con un assistente che risponde alle tue domande sulle regole.">
+<link rel="preload" href="/static/fonts/source-serif-4-regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/static/fonts/barlow-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body{{if .BodyDataChapter}} data-chapter="{{.BodyDataChapter}}"{{end}}>
+<header class="site-header">
+  <a class="site-header__brand" href="/">NOT THE END</a>
+  <nav class="site-header__nav"><a href="/">Regolamento</a></nav>
+</header>
+
+<main>
+{{template "content" .}}
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__license">
+    Testi e immagini del regolamento adattati da <strong>Not the End</strong>, opera di Fumble Srls,
+    con licenza <a href="/regolamento/licenza-e-attribuzione">CC&nbsp;BY-NC-SA&nbsp;3.0&nbsp;IT</a>.
+  </p>
+</footer>
+
+<button class="chat-launcher" id="chat-launcher" type="button" aria-expanded="false" aria-controls="chat-panel">
+  <span class="chat-launcher__hex" aria-hidden="true">?</span>
+  <span class="sr-only">Chiedi al regolamento</span>
+</button>
+
+<section class="chat-panel" id="chat-panel" hidden>
+  <header class="chat-header">
+    <span>Chiedi al regolamento</span>
+    <button class="chat-close" id="chat-close" type="button" aria-label="Chiudi">&times;</button>
+  </header>
+  <div class="chat-log" id="chat-log" role="log" aria-live="polite">
+    <div class="chat-empty-state" id="chat-empty-state">
+      <p>Fai una domanda sulle regole di Not the End.</p>
+      <button class="chat-suggestion" type="button" data-question="Come funziona una prova?">Come funziona una prova?</button>
+      <button class="chat-suggestion" type="button" data-question="Cosa sono le cicatrici?">Cosa sono le cicatrici?</button>
+      <button class="chat-suggestion" type="button" data-question="Quando si esce di scena?">Quando si esce di scena?</button>
+    </div>
+  </div>
+  <form class="chat-form" id="chat-form">
+    <textarea class="chat-input" id="chat-input" rows="1" maxlength="4000" placeholder="Scrivi una domanda…" aria-label="La tua domanda"></textarea>
+    <button class="chat-send" id="chat-send" type="submit" aria-label="Invia">➤</button>
+  </form>
+  <p class="chat-disclaimer">Le risposte possono contenere errori: verifica sul testo del regolamento.</p>
+</section>
+
+<script src="/static/js/chat.js"></script>
+</body>
+</html>
+{{end}}

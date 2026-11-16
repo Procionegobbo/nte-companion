@@ -1,0 +1,40 @@
+{{define "content"}}
+<section class="chapter-band" data-chapter="{{.Chapter.DataChapter}}">
+  <p class="eyebrow eyebrow--on-band">{{.GroupLabel}}</p>
+  <h1>{{.Chapter.Title}}</h1>
+</section>
+
+<div class="chapter-layout">
+  {{if .Chapter.Sections}}
+  <nav class="toc" aria-label="In questo capitolo">
+    <details class="toc__mobile" open>
+      <summary class="eyebrow">In questo capitolo</summary>
+      <ul>
+        {{range .Chapter.Sections}}
+        <li class="toc__level-{{.Level}}"><a href="#{{.Anchor}}">{{.Title}}</a></li>
+        {{end}}
+      </ul>
+    </details>
+  </nav>
+  {{end}}
+
+  <article class="prose">
+    {{.Chapter.HTML}}
+  </article>
+</div>
+
+<nav class="chapter-pager">
+  {{if .Prev}}
+  <a class="chapter-pager__link chapter-pager__link--prev" data-chapter="{{.Prev.DataChapter}}" href="/regolamento/{{.Prev.Slug}}">
+    <span class="eyebrow">Capitolo precedente</span>
+    <span class="chapter-pager__title">{{.Prev.Title}}</span>
+  </a>
+  {{else}}<span></span>{{end}}
+  {{if .Next}}
+  <a class="chapter-pager__link chapter-pager__link--next" data-chapter="{{.Next.DataChapter}}" href="/regolamento/{{.Next.Slug}}">
+    <span class="eyebrow">Capitolo successivo</span>
+    <span class="chapter-pager__title">{{.Next.Title}}</span>
+  </a>
+  {{end}}
+</nav>
+{{end}}

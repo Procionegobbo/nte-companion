@@ -1,0 +1,25 @@
+{{define "content"}}
+<section class="hero">
+  <h1 class="hero__title">Not the End</h1>
+  <p class="hero__subtitle">Il regolamento completo, consultabile online — con un assistente che risponde alle tue domande.</p>
+  <div class="hero__actions">
+    {{with index .Groups 0}}{{with index .Chapters 0}}<a class="button button--primary" href="/regolamento/{{.Slug}}">Inizia a leggere</a>{{end}}{{end}}
+    <button class="button button--ghost" type="button" data-open-chat>Chiedi al regolamento</button>
+  </div>
+</section>
+
+{{range .Groups}}
+<section class="chapter-group" data-group="{{.Key}}">
+  <p class="eyebrow">{{.Label}}</p>
+  <div class="chapter-grid">
+    {{range .Chapters}}
+    <a class="chapter-card" data-chapter="{{.DataChapter}}" href="/regolamento/{{.Slug}}">
+      <span class="chapter-card__num" aria-hidden="true">{{printf "%02d" .Order}}</span>
+      <h2 class="chapter-card__title">{{.Title}}</h2>
+      {{if .Excerpt}}<p class="chapter-card__excerpt">{{.Excerpt}}</p>{{end}}
+    </a>
+    {{end}}
+  </div>
+</section>
+{{end}}
+{{end}}
