@@ -206,12 +206,14 @@ main { flex: 1; }
   padding: var(--space-5) var(--gutter) calc(var(--space-9) + var(--space-5));
   text-align: center;
 }
+.site-footer__thanks,
 .site-footer__license {
   margin: 0 auto;
   max-width: var(--measure);
   font-size: var(--fs-caption);
   color: var(--color-text-muted);
 }
+.site-footer__thanks { margin-bottom: var(--space-3); }
 .site-footer__license a { color: var(--accent); }
 
 /* ---------- Buttons ---------- */
@@ -252,6 +254,24 @@ main { flex: 1; }
   display: flex; gap: var(--space-3); justify-content: center; flex-wrap: wrap;
   margin-top: var(--space-6);
 }
+
+.about {
+  max-width: 72rem; margin: 0 auto;
+  padding: var(--space-6) var(--gutter) var(--space-7);
+  display: grid; gap: var(--space-7);
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  border-top: 1px solid var(--color-rule);
+  border-bottom: 1px solid var(--color-rule);
+}
+.about__block h2 {
+  font-size: var(--fs-h3); letter-spacing: var(--track-h3);
+  margin-bottom: var(--space-3);
+}
+.about__block p {
+  color: var(--color-text-muted); font-size: .9375rem; line-height: 1.6;
+  margin: 0 0 .75em;
+}
+.about__block p:last-child { margin-bottom: 0; }
 
 .chapter-group {
   max-width: 72rem; margin: 0 auto;
