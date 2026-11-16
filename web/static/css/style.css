@@ -207,14 +207,17 @@ main { flex: 1; }
   text-align: center;
 }
 .site-footer__thanks,
-.site-footer__license {
+.site-footer__license,
+.site-footer__credits {
   margin: 0 auto;
   max-width: var(--measure);
   font-size: var(--fs-caption);
   color: var(--color-text-muted);
 }
 .site-footer__thanks { margin-bottom: var(--space-3); }
-.site-footer__license a { color: var(--accent); }
+.site-footer__credits { margin-top: var(--space-2); }
+.site-footer__license a,
+.site-footer__credits a { color: var(--accent); }
 
 .site-footer__projects {
   margin: var(--space-7) auto 0;
