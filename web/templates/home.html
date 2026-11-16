@@ -1,7 +1,7 @@
 {{define "content"}}
 <section class="hero">
   <h1 class="hero__title">Not the End</h1>
-  <p class="hero__subtitle">Il regolamento completo, consultabile online — con un assistente che risponde alle tue domande.</p>
+  <p class="hero__subtitle">Il regolamento completo, consultabile online, con un assistente che risponde alle tue domande.</p>
   <div class="hero__actions">
     {{with index .Groups 0}}{{with index .Chapters 0}}<a class="button button--primary" href="/regolamento/{{.Slug}}">Inizia a leggere</a>{{end}}{{end}}
     <button class="button button--ghost" type="button" data-open-chat>Chiedi al regolamento</button>

@@ -11,8 +11,8 @@ import (
 )
 
 var groupLabels = map[string]string{
-	"base":          "Parte I — Regole base",
-	"ambientazioni": "Parte II — Ambientazioni",
+	"base":          "Parte I: Regole base",
+	"ambientazioni": "Parte II: Ambientazioni",
 	"materiali":     "Materiali",
 }
 
