@@ -69,15 +69,44 @@
     log.scrollTop = log.scrollHeight;
   }
 
+  function escapeHTML(s) {
+    return s
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+  }
+
+  // Minimal markdown: paragraphs, bold/italic, and flat ordered/unordered
+  // lists. The model quotes the regolamento, which uses exactly this
+  // subset — no need for a full markdown library for a chat bubble.
+  function inlineMarkdown(s) {
+    return escapeHTML(s)
+      .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+      .replace(/(^|[^*])\*([^*]+?)\*(?!\*)/g, "$1<em>$2</em>");
+  }
+
   function renderAssistantText(container, text) {
-    // Plain-text rendering: paragraphs only, no markdown/small-caps — the
-    // full regolamento typography is reserved for the static pages.
     container.innerHTML = "";
-    text.split(/\n{2,}/).forEach((para) => {
-      if (!para.trim()) return;
-      const p = document.createElement("p");
-      p.textContent = para.trim();
-      container.appendChild(p);
+    const blocks = text.split(/\n\s*\n/).map((b) => b.trim()).filter(Boolean);
+
+    blocks.forEach((block) => {
+      const lines = block.split("\n").map((l) => l.trim()).filter(Boolean);
+      const isOrdered = lines.length > 0 && lines.every((l) => /^\d+[.)]\s+/.test(l));
+      const isUnordered = lines.length > 0 && lines.every((l) => /^[-*]\s+/.test(l));
+
+      if (isOrdered || isUnordered) {
+        const list = document.createElement(isOrdered ? "ol" : "ul");
+        lines.forEach((line) => {
+          const li = document.createElement("li");
+          li.innerHTML = inlineMarkdown(line.replace(/^(\d+[.)]|[-*])\s+/, ""));
+          list.appendChild(li);
+        });
+        container.appendChild(list);
+      } else {
+        const p = document.createElement("p");
+        p.innerHTML = inlineMarkdown(lines.join(" "));
+        container.appendChild(p);
+      }
     });
   }
 
