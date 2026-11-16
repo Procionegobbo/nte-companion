@@ -1,33 +1,28 @@
-Not the End — Companion
-Contenuti del regolamento (cartella `content/`)
+MIT License
 
-I contenuti testuali e le immagini presenti in questo repository all'interno di
-`content/regolamento/` sono tratti e adattati dal manuale di gioco di ruolo
-"Not the End", rilasciato da Fumble Srls con licenza:
+Copyright (c) 2026 Federico Maiorini
 
-Creative Commons Attribuzione - Non Commerciale - Condividi allo stesso modo
-3.0 Italia (CC BY-NC-SA 3.0 IT)
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-Riassunto in linguaggio semplice: https://creativecommons.org/licenses/by-nc-sa/3.0/it/
-Testo legale completo: https://creativecommons.org/licenses/by-nc-sa/3.0/it/legalcode
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-In conformità con la clausola "Condividi allo stesso modo", questi contenuti
-derivati sono rilasciati sotto la medesima licenza CC BY-NC-SA 3.0 IT. Non
-sono state apportate modifiche sostanziali al contenuto originale, salvo gli
-adattamenti di formato (estrazione in Markdown, trascrizione dei diagrammi)
-necessari per l'uso come sorgente di un chatbot di supporto alle regole.
-
-Attribuzione dell'opera originale:
-- Titolo: Not the End - Manuale di gioco
-- ISBN: 978-88-32117-11-0
-- Idea e Art Direction: Claudio Pustorino
-- Game Design: Claudio Pustorino, Fabio Airoldi, Claudio Serena
-- Illustrazioni: Pietro Bastas
-- Impaginazione e layout: Claudio Pustorino
-- Editing: Claudio Serena
-- Pubblicato a cura di: Fumble Srls (https://fumblegdr.it)
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
 ---
 
-Il codice sorgente eventualmente presente altrove in questo repository (al di
-fuori di `content/`) non è coperto da questa licenza, salvo diversa indicazione.
+Questa licenza MIT copre esclusivamente il codice sorgente di questo
+repository (tutto tranne la cartella `content/`). I contenuti del
+regolamento di "Not the End" in `content/` restano protetti dalla licenza
+originale dell'opera (CC BY-NC-SA 3.0 IT) — vedi content/LICENSE.
