@@ -54,7 +54,8 @@ func main() {
 		log.Fatalf("sub-filesystem static fallito: %v", err)
 	}
 
-	client := chat.NewClient(cfg.OpenRouterAPIKey, cfg.OpenRouterBaseURL, cfg.OpenRouterModel, cfg.MaxTokens, cfg.RequestTimeout)
+	client := chat.NewClient(cfg.OpenRouterAPIKey, cfg.OpenRouterBaseURL, cfg.OpenRouterModel, cfg.OpenRouterFallbacks,
+		cfg.MaxTokens, cfg.OpenRouterMaxPriceIn, cfg.OpenRouterMaxPriceOut, cfg.RequestTimeout)
 	limiter := ratelimit.New(cfg.RateLimitPerMinute, cfg.RateLimitPerDay)
 	defer limiter.Close()
 	chatHandler := chat.NewHandler(client, systemPrompt, limiter)
@@ -70,8 +71,8 @@ func main() {
 		ReadHeaderTimeout: 5 * time.Second,
 	}
 
-	log.Printf("nte-companion: avvio su :%s — %d capitoli caricati, modello %s, rate-limit %d/min %d/giorno",
-		cfg.Port, len(chapters), cfg.OpenRouterModel, cfg.RateLimitPerMinute, cfg.RateLimitPerDay)
+	log.Printf("nte-companion: avvio su :%s — %d capitoli caricati, modello %s (+%d fallback), rate-limit %d/min %d/giorno",
+		cfg.Port, len(chapters), cfg.OpenRouterModel, len(cfg.OpenRouterFallbacks), cfg.RateLimitPerMinute, cfg.RateLimitPerDay)
 
 	go func() {
 		if err := srv.ListenAndServe(); err != nil && !errors.Is(err, http.ErrServerClosed) {

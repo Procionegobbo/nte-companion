@@ -24,7 +24,7 @@ func newTestHandler(t *testing.T, upstreamBody string) *Handler {
 	srv := fakeOpenRouter(t, upstreamBody)
 	t.Cleanup(srv.Close)
 
-	client := NewClient("test-key", srv.URL, "test-model", 700, 5*time.Second)
+	client := NewClient("test-key", srv.URL, "test-model", nil, 700, 0.50, 2.00, 5*time.Second)
 	limiter := ratelimit.New(1000, 1000)
 	t.Cleanup(limiter.Close)
 	return NewHandler(client, "system prompt di test", limiter)
@@ -99,7 +99,7 @@ func TestHandlerTruncatesLongHistory(t *testing.T) {
 func TestHandlerRateLimited(t *testing.T) {
 	srv := fakeOpenRouter(t, "data: [DONE]\n\n")
 	defer srv.Close()
-	client := NewClient("test-key", srv.URL, "test-model", 700, 5*time.Second)
+	client := NewClient("test-key", srv.URL, "test-model", nil, 700, 0.50, 2.00, 5*time.Second)
 	limiter := ratelimit.New(1, 1000)
 	defer limiter.Close()
 	h := NewHandler(client, "system prompt", limiter)

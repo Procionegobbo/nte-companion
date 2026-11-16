@@ -431,6 +431,7 @@ main { flex: 1; }
   background: var(--color-surface); border: 1px solid var(--color-rule);
   border-radius: 12px; box-shadow: var(--shadow-chat);
 }
+.chat-panel[hidden] { display: none; }
 @media (max-width: 40rem) {
   .chat-panel { inset: 0; width: auto; height: 100dvh; border: 0; border-radius: 0; }
 }
