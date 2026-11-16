@@ -498,6 +498,10 @@ main { flex: 1; }
   font-family: var(--font-body); font-size: 1rem; line-height: 1.55; color: var(--color-text);
 }
 .msg--assistant p { margin: 0 0 .6em; }
+.msg--assistant ol,
+.msg--assistant ul { margin: 0 0 .6em; padding-left: 1.25em; }
+.msg--assistant li { margin: .2em 0; }
+.msg--assistant strong { font-weight: 600; color: var(--accent); }
 .msg--assistant > :last-child { margin-bottom: 0; }
 .msg--error { color: var(--color-danger); border-left-color: var(--color-danger); }
 
