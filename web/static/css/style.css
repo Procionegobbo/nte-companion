@@ -543,6 +543,10 @@ main { flex: 1; }
 /* ---------- Responsive ---------- */
 @media (min-width: 72rem) {
   .chapter-layout { grid-template-columns: 15rem minmax(0, var(--measure)); }
+  /* Explicit placement: without a .toc sibling (chapters with no ## sections,
+     e.g. licenza-e-attribuzione, materiali-di-gioco), grid auto-placement
+     would otherwise put .prose in the first (15rem-wide) column. */
+  .prose { grid-column: 2; }
   .toc { position: sticky; top: 2rem; align-self: start; max-height: calc(100dvh - 4rem); overflow: auto; }
   .toc summary { pointer-events: none; }
 }
